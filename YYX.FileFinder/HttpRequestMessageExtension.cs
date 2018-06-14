@@ -28,10 +28,16 @@ namespace YYX.FileFinder
                 using (var stream = new StreamReader(resourceStream))
                 {
                     var html = stream.ReadToEnd();
-                    var htmlTrOfFolders = directoryInfos.Select(item => HtmlHelper.CreatHtmlTrOfFolder(item.Name, "#"));
+                    var htmlTrOfFolders = directoryInfos.Select(item => HtmlHelper.CreatHtmlTrOfFolder(item.Name, item.FullName));
                     var htmlTrOfFiles = fileInfos.Select(item => HtmlHelper.CreatHtmlTrOfFile(item.Name, item.FullName));
-                    var totalHtmlTr = string.Join(Environment.NewLine, htmlTrOfFolders.Concat(htmlTrOfFiles));
-                    html = html.Replace("trList", totalHtmlTr);
+
+
+                    //当前路径
+
+                    var fullHtmlPath = directoryInfo.GetFullHtmlPath();
+                    var totalHtmlTr = string.Join(Environment.NewLine, htmlTrOfFolders.Concat(htmlTrOfFiles).Concat(new[] { fullHtmlPath }));
+                    html = html.Replace("content", totalHtmlTr);
+
                     response.Content = new StringContent(html, Encoding.UTF8);
                     response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
                 }

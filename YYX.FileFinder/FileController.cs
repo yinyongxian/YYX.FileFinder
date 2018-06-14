@@ -7,10 +7,10 @@ using System.Web.Http;
 
 namespace YYX.FileFinder
 {
-    public class DownloadController : ApiController
+    public class FileController : ApiController
     {
         [HttpGet]
-        public HttpResponseMessage DownloadFile(string filePath)
+        public HttpResponseMessage Download(string filePath)
         {
             var fileName = Path.GetFileName(filePath);
             if (File.Exists(filePath) == false)

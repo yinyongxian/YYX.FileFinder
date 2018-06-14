@@ -62,8 +62,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HomeController - Copy.cs" />
-    <Compile Include="DownloadController.cs" />
+    <Compile Include="DirectoryInfoExtension.cs" />
+    <Compile Include="FolderController.cs" />
+    <Compile Include="HomeController.cs" />
+    <Compile Include="FileController.cs" />
     <Compile Include="HtmlHelper.cs" />
     <Compile Include="HttpRequestMessageExtension.cs" />
     <Compile Include="Program.cs" />
