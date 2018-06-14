@@ -6,37 +6,32 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
-using System.Web.Http;
-using System.Windows.Forms;
 
 namespace YYX.FileFinder
 {
-    public class HomeController : ApiController
+    public static class HttpRequestMessageExtension
     {
-        [HttpGet]
-        public HttpResponseMessage Index()
+        public static HttpResponseMessage Response(this HttpRequestMessage request, string path)
         {
             try
             {
-                var directoryInfo = new DirectoryInfo(Application.StartupPath);
+                var directoryInfo = new DirectoryInfo(path);
+                var directoryInfos = directoryInfo.GetDirectories();
                 var fileInfos = directoryInfo.GetFiles();
-                var fileInfo = fileInfos.OrderBy(item => item.CreationTime).LastOrDefault();
-                if (fileInfo == null)
-                {
-                    throw new Exception("未找到文件");
-                }
-
-                var fileName = fileInfo.Name;
                 var assembly = Assembly.GetExecutingAssembly();
                 var resourceStream = assembly.GetManifestResourceStream("YYX.FileFinder.index.html");
                 if (resourceStream == null)
                 {
-                    throw new Exception("首页异常");
+                    throw new Exception("页面异常");
                 }
-                var response = Request.CreateResponse(HttpStatusCode.OK);
+                var response = request.CreateResponse(HttpStatusCode.OK);
                 using (var stream = new StreamReader(resourceStream))
                 {
                     var html = stream.ReadToEnd();
+                    var htmlTrOfFolders = directoryInfos.Select(item => HtmlHelper.CreatHtmlTrOfFolder(item.Name, "#"));
+                    var htmlTrOfFiles = fileInfos.Select(item => HtmlHelper.CreatHtmlTrOfFile(item.Name, item.FullName));
+                    var totalHtmlTr = string.Join(Environment.NewLine, htmlTrOfFolders.Concat(htmlTrOfFiles));
+                    html = html.Replace("trList", totalHtmlTr);
                     response.Content = new StringContent(html, Encoding.UTF8);
                     response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
                 }
@@ -44,7 +39,7 @@ namespace YYX.FileFinder
             }
             catch (Exception exception)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+                return request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
             }
         }
     }

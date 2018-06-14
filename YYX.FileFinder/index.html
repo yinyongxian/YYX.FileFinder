@@ -14,19 +14,17 @@ table {
 th {
 	border: solid;
 	border-width: 1px;
+	background-color:honeydew
 }
 td {
 	border: solid;
 	border-width: 1px;
 }
-a {
-	float: none;
-}
-.td-left {
+td {
 	text-align: left;
 }
-.td-center {
-	text-align: center;
+a {
+	float: right;
 }
 </style>
 </head>
@@ -37,12 +35,13 @@ a {
   <tbody>
     <tr>
       <th scope="col">文件夹/文件</th>
-      <th scope="col">操作</th>
     </tr>
-    <tr>
-      <td class="td-Left">文件夹/文件</th>
-      <td class="td-center"><a href="#">操作</a></th>
-    </tr>
+<!--
+	<tr>
+		<td>文件夹/文件<a href = "#" >操作</a></td>
+	</tr>
+-->
+    trList
   </tbody>
 </table>
 </body>
