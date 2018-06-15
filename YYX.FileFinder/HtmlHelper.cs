@@ -1,4 +1,6 @@
-﻿namespace YYX.FileFinder
+﻿using System.Runtime.InteropServices;
+
+namespace YYX.FileFinder
 {
     static class HtmlHelper
     {
@@ -11,13 +13,13 @@
 
         public static string GetOpenFolderLink(string path)
         {
-            return string.Format("{0}/Folder/Open?path={1}", DomainName.Vlaue, path);
+            return string.Format("/Folder/Open?path={0}", path);
         }
 
         public static string CreatHtmlTrOfFile(string fileName, string fileFullName)
         {
             const string operation = "下载";
-            var link = string.Format("{0}/File/Download?filePath={1}", DomainName.Vlaue, fileFullName);
+            var link = string.Format("/File/Download?filePath={0}", fileFullName);
             return CreatHtmlTr(fileName, link, operation);
         }
 

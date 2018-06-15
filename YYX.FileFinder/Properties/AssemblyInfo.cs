@@ -4,10 +4,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("YYX.FileFinder")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("文件查找器")]
+[assembly: AssemblyDescription("文件查找器")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("尹永贤")]
 [assembly: AssemblyProduct("YYX.FileFinder")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]

@@ -8,6 +8,12 @@ using System.Windows.Forms;
 
 namespace YYX.FileFinder
 {
+    /// <summary>
+    /// 文件查找器
+    /// 尹永贤
+    /// yinyongxian@qq.com
+    /// 2018-6-15 11:26:20
+    /// </summary>
     static class Program
     {
         static void Main()
@@ -31,6 +37,8 @@ namespace YYX.FileFinder
                 }
             };
 
+            
+
             var thread = new Thread(() =>
                 {
                     var config = new HttpSelfHostConfiguration(DomainName.Vlaue);
@@ -39,16 +47,6 @@ namespace YYX.FileFinder
                         "{controller}/{action}",
                         new { controller = "Home", action = "Index" }
                     );
-                    //config.Routes.MapHttpRoute(
-                    //    "Folder",
-                    //    "api/{controller}/{action}",
-                    //    new { controller = "Folder", action = "Open" }
-                    //);
-                    //config.Routes.MapHttpRoute(
-                    //    "File",
-                    //    "api/{controller}/{action}",
-                    //    new { controller = "File", action = "Download" }
-                    //);
 
                     using (var httpSelfHostServer = new HttpSelfHostServer(config))
                     {
