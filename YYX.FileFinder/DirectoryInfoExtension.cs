@@ -21,14 +21,14 @@ namespace YYX.FileFinder
                     fullHtmlPath = "\\" + fullHtmlPath;
                 }
             }
-            return fullHtmlPath;
+            return string.Format("当前路径&nbsp{0}", fullHtmlPath);
         }
 
         private static string CreatHtmlPath(this FileSystemInfo directoryInfo)
         {
             return directoryInfo == null
                 ? "文件夹信息错误"
-                : string.Format("<a href = \"{0}\" style=\"float:none\">{1}</a>", HtmlHelper.GetOpenFolderLink(directoryInfo.FullName), directoryInfo.Name);
+                : HtmlHelper.GetLink(HtmlHelper.GetOpenFolderLink(directoryInfo.FullName), directoryInfo.Name);
         }
     }
 }

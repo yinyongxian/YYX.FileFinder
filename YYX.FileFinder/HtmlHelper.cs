@@ -25,5 +25,10 @@
         {
             return string.Format("<tr><td>{0}<a href = \"{1}\">{2}</a></td></tr>", name, link, operation);
         }
+
+        public static string GetLink(string link, string text)
+        {
+            return string.Format("<a href = \"{0}\" style=\"float:none\">{1}</a>", link, text);
+        }
     }
 }
