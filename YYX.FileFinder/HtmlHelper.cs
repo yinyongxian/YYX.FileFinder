@@ -11,19 +11,19 @@
 
         public static string GetOpenFolderLink(string path)
         {
-            return string.Format("Folder/Open?path={0}", path);
+            return string.Format("{0}/Folder/Open?path={1}", DomainName.Vlaue, path);
         }
 
         public static string CreatHtmlTrOfFile(string fileName, string fileFullName)
         {
             const string operation = "下载";
-            var link = string.Format("FIle/Download?filePath={0}", fileFullName);
+            var link = string.Format("{0}/File/Download?filePath={1}", DomainName.Vlaue, fileFullName);
             return CreatHtmlTr(fileName, link, operation);
         }
 
         private static string CreatHtmlTr(string name, string link, string operation)
         {
-            return string.Format("<tr><td>{0}<a href = \"{1}\" >{2}</a></td></tr>", name, link, operation);
+            return string.Format("<tr><td>{0}<a href = \"{1}\">{2}</a></td></tr>", name, link, operation);
         }
     }
 }

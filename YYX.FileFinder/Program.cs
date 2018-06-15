@@ -33,12 +33,22 @@ namespace YYX.FileFinder
 
             var thread = new Thread(() =>
                 {
-                    var config = new HttpSelfHostConfiguration("http://localhost:12321");
+                    var config = new HttpSelfHostConfiguration(DomainName.Vlaue);
                     config.Routes.MapHttpRoute(
                         "Default",
                         "{controller}/{action}",
                         new { controller = "Home", action = "Index" }
                     );
+                    //config.Routes.MapHttpRoute(
+                    //    "Folder",
+                    //    "api/{controller}/{action}",
+                    //    new { controller = "Folder", action = "Open" }
+                    //);
+                    //config.Routes.MapHttpRoute(
+                    //    "File",
+                    //    "api/{controller}/{action}",
+                    //    new { controller = "File", action = "Download" }
+                    //);
 
                     using (var httpSelfHostServer = new HttpSelfHostServer(config))
                     {

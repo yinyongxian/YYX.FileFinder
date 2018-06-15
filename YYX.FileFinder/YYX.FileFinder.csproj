@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DirectoryInfoExtension.cs" />
+    <Compile Include="DomainName.cs" />
     <Compile Include="FolderController.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="FileController.cs" />
