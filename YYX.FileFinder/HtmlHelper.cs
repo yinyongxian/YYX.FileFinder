@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace YYX.FileFinder
+﻿namespace YYX.FileFinder
 {
     static class HtmlHelper
     {
@@ -25,7 +23,7 @@ namespace YYX.FileFinder
 
         private static string CreatHtmlTr(string name, string link, string operation)
         {
-            return string.Format("<tr><td>{0}<a href = \"{1}\">{2}</a></td></tr>", name, link, operation);
+            return string.Format("<tr><td><a class=\"a-operation\"  href = \"{1}\">{2}</a>{0}</td></tr>", name, link, operation);
         }
 
         public static string GetLink(string link, string text)
