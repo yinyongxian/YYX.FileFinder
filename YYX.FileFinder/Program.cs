@@ -37,7 +37,7 @@ namespace YYX.FileFinder
                 }
             };
 
-
+            AutoRun.RunWithWindowsStarted();
 
             var thread = new Thread(() =>
                 {

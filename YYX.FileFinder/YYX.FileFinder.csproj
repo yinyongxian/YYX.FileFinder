@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoRun.cs" />
     <Compile Include="DirectoryInfoExtension.cs" />
     <Compile Include="DomainName.cs" />
     <Compile Include="FolderController.cs" />
@@ -102,6 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="WindowAutoRun.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="index.html" />
