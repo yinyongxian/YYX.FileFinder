@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2CEF3A3A-6057-4F9B-9099-BA4085C90CB7}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>YYX.FileFinder</RootNamespace>
     <AssemblyName>文件查找器</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -62,6 +62,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http">
       <HintPath>Resources\System.Net.Http.dll</HintPath>
     </Reference>
@@ -91,6 +92,12 @@
     <Compile Include="DirectoryInfoExtension.cs" />
     <Compile Include="DomainName.cs" />
     <Compile Include="FolderController.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomeController.cs" />
     <Compile Include="FileController.cs" />
     <Compile Include="HtmlHelper.cs" />
@@ -107,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="index.html" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -139,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="filefinder.ico" />
+    <None Include="Resources\settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

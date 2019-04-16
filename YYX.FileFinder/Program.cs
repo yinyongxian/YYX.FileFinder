@@ -16,8 +16,15 @@ namespace YYX.FileFinder
     /// </summary>
     static class Program
     {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             AppDomain.CurrentDomain.AssemblyResolve += (sender, a) =>
             {
                 var nameSpace = typeof(Program).Namespace;
@@ -62,11 +69,17 @@ namespace YYX.FileFinder
                             Console.WriteLine(ex.Message);
                         }
                         Console.ReadLine();
+
+                        while (true)
+                        {
+                            Thread.Sleep(10);
+                        }
                     }
                 })
             { IsBackground = true };
             thread.Start();
-            Console.ReadLine();
+
+            Application.Run(new MainForm());
         }
     }
 }
