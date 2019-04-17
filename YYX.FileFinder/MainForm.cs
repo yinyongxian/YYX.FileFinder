@@ -37,12 +37,14 @@ namespace YYX.FileFinder
                             httpSelfHostServer.OpenAsync().Wait();
                             IpaddressHelper.DisplayIpaddress();
 
+                            Log4Log.Info(@"Started");
                             ContentLog.WriteLine(@"Started");
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
 
+                            Log4Log.Info(ex.Message);
                             ContentLog.WriteLine(ex.Message);
                         }
 

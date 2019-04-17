@@ -12,6 +12,7 @@ namespace YYX.FileFinder
         [HttpGet]
         public HttpResponseMessage Download(string filePath)
         {
+            Log4Log.Info(Request.ToString());
             ContentLog.WriteLine(Request.ToString());
 
             var fileName = Path.GetFileName(filePath);
@@ -32,7 +33,9 @@ namespace YYX.FileFinder
                     };
                 }
 
+                Log4Log.Info(response.ToString());
                 ContentLog.WriteLine(response.ToString());
+
 
                 return response;
             }
@@ -40,6 +43,7 @@ namespace YYX.FileFinder
             {
                 var httpResponseMessage = Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
 
+                Log4Log.Info(httpResponseMessage.ToString());
                 ContentLog.WriteLine(httpResponseMessage.ToString());
 
                 return httpResponseMessage;

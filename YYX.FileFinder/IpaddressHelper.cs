@@ -11,7 +11,9 @@ namespace YYX.FileFinder
         {
             try
             {
-                ContentLog.WriteLine(@"您可以通过以下链接访问：");
+                const string linkDescription = @"您可以通过以下链接访问：";
+                Log4Log.Info(linkDescription);
+                ContentLog.WriteLine(linkDescription);
 
                 var hostName = Dns.GetHostName();
                 var ipHostEntry = Dns.GetHostEntry(hostName);
@@ -19,11 +21,18 @@ namespace YYX.FileFinder
                     .AddressList
                     .Where(item => item.AddressFamily == AddressFamily.InterNetwork)
                     .ToList()
-                    .ForEach(item => ContentLog.WriteLine(string.Format(@"http://{0}:12321", item.ToString())));
+                    .ForEach(item =>
+                    {
+                        var url = string.Format(@"http://{0}:12321", item.ToString());
+                        Log4Log.Info(url);
+                        ContentLog.WriteLine(url);
+                    });
             }
             catch (Exception ex)
             {
-                ContentLog.WriteLine(@"获取本机IP出错:" + ex.Message);
+                var exceptionMessage = @"获取本机IP出错:" + ex.Message;
+                Log4Log.Info(exceptionMessage);
+                ContentLog.WriteLine(exceptionMessage);
             }
         }
     }
