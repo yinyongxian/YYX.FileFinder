@@ -5,7 +5,7 @@ namespace YYX.FileFinder
 {
     public static class AutoRun
     {
-        private static bool GetRunEnable()
+        public static bool GetRunEnable()
         {
             var filePath = Application.ExecutablePath;
             var fileName = Path.GetFileName(filePath);
@@ -13,7 +13,7 @@ namespace YYX.FileFinder
             return WindowAutoRun.GetEnable(fileName, filePath);
         }
 
-        private static void SetRunEnable(bool runEnable)
+        public static void SetRunEnable(bool runEnable)
         {
             var filePath = Application.ExecutablePath;
             var fileName = Path.GetFileName(filePath);
@@ -27,6 +27,15 @@ namespace YYX.FileFinder
             if (!runEnable)
             {
                 SetRunEnable(true);
+            }
+        }
+
+        public static void NotRunWithWindowsStarted()
+        {
+            var runEnable = GetRunEnable();
+            if (runEnable)
+            {
+                SetRunEnable(false);
             }
         }
     }

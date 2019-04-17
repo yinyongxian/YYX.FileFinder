@@ -18,7 +18,8 @@ namespace YYX.FileFinder
         {
             ContentLog.Initialize(richTextBoxContent);
 
-            AutoRun.RunWithWindowsStarted();
+            var autoRunEnable = AutoRun.GetRunEnable();
+            AutoRunToolStripMenuItem.Checked = autoRunEnable;
 
             var thread = new Thread(() =>
                 {
@@ -56,6 +57,14 @@ namespace YYX.FileFinder
         private void richTextBoxContent_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             Process.Start(e.LinkText);
+        }
+
+        private void AutoRunToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var autoRun = AutoRunToolStripMenuItem.Checked;
+            var newAutoRun = !autoRun;
+            AutoRun.SetRunEnable(newAutoRun);
+            AutoRunToolStripMenuItem.Checked = newAutoRun;
         }
     }
 }
