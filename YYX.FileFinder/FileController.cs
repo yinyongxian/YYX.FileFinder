@@ -12,6 +12,8 @@ namespace YYX.FileFinder
         [HttpGet]
         public HttpResponseMessage Download(string filePath)
         {
+            ContentLog.WriteLine(Request.ToString());
+
             var fileName = Path.GetFileName(filePath);
             if (File.Exists(filePath) == false)
             {
@@ -29,11 +31,18 @@ namespace YYX.FileFinder
                         FileName = fileName
                     };
                 }
+
+                ContentLog.WriteLine(response.ToString());
+
                 return response;
             }
             catch (Exception exception)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+                var httpResponseMessage = Request.CreateErrorResponse(HttpStatusCode.NotFound, exception.Message);
+
+                ContentLog.WriteLine(httpResponseMessage.ToString());
+
+                return httpResponseMessage;
             }
         }
     }

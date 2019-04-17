@@ -36,11 +36,13 @@ namespace YYX.FileFinder
                         {
                             httpSelfHostServer.OpenAsync().Wait();
                             IpaddressHelper.DisplayIpaddress();
+
                             ContentLog.WriteLine(@"Started");
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
+
                             ContentLog.WriteLine(ex.Message);
                         }
 

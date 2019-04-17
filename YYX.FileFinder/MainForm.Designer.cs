@@ -32,11 +32,8 @@
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.AutoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStripBoot = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.richTextBoxContent = new System.Windows.Forms.RichTextBox();
             this.toolStripMenu.SuspendLayout();
-            this.statusStripBoot.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripMenu
@@ -64,23 +61,9 @@
             // AutoRunToolStripMenuItem
             // 
             this.AutoRunToolStripMenuItem.Name = "AutoRunToolStripMenuItem";
-            this.AutoRunToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AutoRunToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.AutoRunToolStripMenuItem.Text = "开机启动";
             this.AutoRunToolStripMenuItem.Click += new System.EventHandler(this.AutoRunToolStripMenuItem_Click);
-            // 
-            // statusStripBoot
-            // 
-            this.statusStripBoot.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusStripBoot.Location = new System.Drawing.Point(0, 428);
-            this.statusStripBoot.Name = "statusStripBoot";
-            this.statusStripBoot.Size = new System.Drawing.Size(800, 22);
-            this.statusStripBoot.TabIndex = 2;
-            // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // richTextBoxContent
             // 
@@ -98,7 +81,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.statusStripBoot);
             this.Controls.Add(this.richTextBoxContent);
             this.Controls.Add(this.toolStripMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -106,8 +88,6 @@
             this.Text = "File Finder";
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
-            this.statusStripBoot.ResumeLayout(false);
-            this.statusStripBoot.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,8 +96,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStripMenu;
-        private System.Windows.Forms.StatusStrip statusStripBoot;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.RichTextBox richTextBoxContent;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem AutoRunToolStripMenuItem;

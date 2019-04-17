@@ -12,6 +12,7 @@ namespace YYX.FileFinder
             try
             {
                 ContentLog.WriteLine(@"您可以通过以下链接访问：");
+
                 var hostName = Dns.GetHostName();
                 var ipHostEntry = Dns.GetHostEntry(hostName);
                 ipHostEntry

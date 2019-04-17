@@ -19,15 +19,18 @@ namespace YYX.FileFinder
             {
                 if (currentRichTextBox != null)
                 {
-                    currentRichTextBox.AppendText(text);
-                    currentRichTextBox.AppendText(Environment.NewLine);
-
                     var linesLength = currentRichTextBox.Lines.Length;
                     var overflow = linesLength > MaxCount;
                     if (overflow)
                     {
                         currentRichTextBox.Clear();
                     }
+
+                    currentRichTextBox.AppendText(text);
+                    currentRichTextBox.AppendText(Environment.NewLine);
+
+                    currentRichTextBox.SelectionStart = currentRichTextBox.Text.Length;
+                    currentRichTextBox.ScrollToCaret();
                 }
             }));
         }

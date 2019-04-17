@@ -8,7 +8,13 @@ namespace YYX.FileFinder
         [HttpGet]
         public HttpResponseMessage Open(string path)
         {
-           return Request.Response(path);
+            ContentLog.WriteLine(Request.ToString());
+
+            var httpResponseMessage = Request.Response(path);
+
+            ContentLog.WriteLine(httpResponseMessage.ToString());
+
+            return httpResponseMessage;
         }
     }
 }

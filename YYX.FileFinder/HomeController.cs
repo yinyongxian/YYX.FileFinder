@@ -10,7 +10,14 @@ namespace YYX.FileFinder
         public HttpResponseMessage Index()
         {
             var path = Application.StartupPath;
-            return Request.Response(path);
+
+            ContentLog.WriteLine(Request.ToString());
+
+            var httpResponseMessage = Request.Response(path);
+
+            ContentLog.WriteLine(httpResponseMessage.ToString());
+
+            return httpResponseMessage;
         }
     }
 }
