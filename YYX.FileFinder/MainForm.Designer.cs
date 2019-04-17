@@ -85,6 +85,7 @@
             this.Controls.Add(this.toolStripMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Finder";
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
