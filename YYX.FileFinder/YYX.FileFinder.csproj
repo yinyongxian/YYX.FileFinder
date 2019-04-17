@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoRun.cs" />
+    <Compile Include="ContentLog.cs" />
     <Compile Include="DirectoryInfoExtension.cs" />
     <Compile Include="DomainName.cs" />
     <Compile Include="FolderController.cs" />

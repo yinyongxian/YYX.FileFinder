@@ -1,9 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using System.Threading;
-using System.Web.Http;
-using System.Web.Http.SelfHost;
 using System.Windows.Forms;
 
 namespace YYX.FileFinder
@@ -37,47 +34,10 @@ namespace YYX.FileFinder
                         stream.Read(assemblyData, 0, assemblyData.Length);
                         return Assembly.Load(assemblyData);
                     }
-                    else
-                    {
-                        throw new FileLoadException(resourceName);
-                    }
+
+                    throw new FileLoadException(resourceName);
                 }
             };
-
-            AutoRun.RunWithWindowsStarted();
-
-            var thread = new Thread(() =>
-                {
-                    var config = new HttpSelfHostConfiguration(DomainName.Vlaue);
-                    config.Routes.MapHttpRoute(
-                        "Default",
-                        "{controller}/{action}",
-                        new { controller = "Home", action = "Index" }
-                    );
-
-                    using (var httpSelfHostServer = new HttpSelfHostServer(config))
-                    {
-                        try
-                        {
-                            httpSelfHostServer.OpenAsync().Wait();
-                            IpaddressHelper.DisplayIpaddress();
-                            Console.WriteLine(@"Started");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                            Console.WriteLine(ex.Message);
-                        }
-                        Console.ReadLine();
-
-                        while (true)
-                        {
-                            Thread.Sleep(10);
-                        }
-                    }
-                })
-            { IsBackground = true };
-            thread.Start();
 
             Application.Run(new MainForm());
         }

@@ -28,20 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1.SuspendLayout();
+            this.statusStripBoot = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.richTextBoxContent = new System.Windows.Forms.RichTextBox();
+            this.toolStripMenu.SuspendLayout();
+            this.statusStripBoot.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStrip1
+            // toolStripMenu
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolStripMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
+            this.toolStripMenu.Name = "toolStripMenu";
+            this.toolStripMenu.Size = new System.Drawing.Size(800, 23);
+            this.toolStripMenu.TabIndex = 0;
+            this.toolStripMenu.Text = "toolStrip1";
             // 
             // toolStripButton1
             // 
@@ -49,19 +55,49 @@
             this.toolStripButton1.Image = global::YYX.FileFinder.Properties.Resources.settings;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 20);
             this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // statusStripBoot
+            // 
+            this.statusStripBoot.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusStripBoot.Location = new System.Drawing.Point(0, 428);
+            this.statusStripBoot.Name = "statusStripBoot";
+            this.statusStripBoot.Size = new System.Drawing.Size(800, 22);
+            this.statusStripBoot.TabIndex = 2;
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // richTextBoxContent
+            // 
+            this.richTextBoxContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxContent.Location = new System.Drawing.Point(0, 23);
+            this.richTextBoxContent.Name = "richTextBoxContent";
+            this.richTextBoxContent.Size = new System.Drawing.Size(800, 427);
+            this.richTextBoxContent.TabIndex = 1;
+            this.richTextBoxContent.Text = "";
+            this.richTextBoxContent.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxContent_LinkClicked);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.statusStripBoot);
+            this.Controls.Add(this.richTextBoxContent);
+            this.Controls.Add(this.toolStripMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Form1";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.Text = "File Finder";
+            this.toolStripMenu.ResumeLayout(false);
+            this.toolStripMenu.PerformLayout();
+            this.statusStripBoot.ResumeLayout(false);
+            this.statusStripBoot.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -69,8 +105,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.StatusStrip statusStripBoot;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.RichTextBox richTextBoxContent;
     }
 }
 
