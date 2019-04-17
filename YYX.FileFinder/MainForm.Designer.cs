@@ -56,12 +56,11 @@
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 20);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
             // AutoRunToolStripMenuItem
             // 
             this.AutoRunToolStripMenuItem.Name = "AutoRunToolStripMenuItem";
-            this.AutoRunToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.AutoRunToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AutoRunToolStripMenuItem.Text = "开机启动";
             this.AutoRunToolStripMenuItem.Click += new System.EventHandler(this.AutoRunToolStripMenuItem_Click);
             // 
