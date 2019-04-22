@@ -4,7 +4,7 @@
     {
         public static string Vlaue
         {
-            get { return "http://localhost:12321"; }
+            get { return "http://localhost"; }
         }
     }
 }
