@@ -2,7 +2,7 @@
 {
     public static class DomainName
     {
-        public static string Vlaue
+        public static string Value
         {
             get { return "http://localhost"; }
         }

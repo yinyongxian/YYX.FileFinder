@@ -23,7 +23,7 @@ namespace YYX.FileFinder
                     .ToList()
                     .ForEach(item =>
                     {
-                        var url = string.Format(@"http://{0}", item.ToString());
+                        var url = string.Format(@"http://{0}", item);
                         Log4Log.Info(url);
                         ContentLog.WriteLine(url);
                     });

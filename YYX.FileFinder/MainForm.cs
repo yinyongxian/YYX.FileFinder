@@ -23,7 +23,7 @@ namespace YYX.FileFinder
 
             var thread = new Thread(() =>
                 {
-                    var config = new HttpSelfHostConfiguration(DomainName.Vlaue);
+                    var config = new HttpSelfHostConfiguration(DomainName.Value);
                     config.Routes.MapHttpRoute(
                         "Default",
                         "{controller}/{action}",
@@ -53,6 +53,7 @@ namespace YYX.FileFinder
                             Thread.Sleep(10);
                         }
                     }
+                    // ReSharper disable once FunctionNeverReturns
                 })
             { IsBackground = true };
             thread.Start();

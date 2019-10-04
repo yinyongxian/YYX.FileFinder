@@ -154,10 +154,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="filefinder.ico" />
+    <Content Include="Images\filefinder.png" />
+    <Content Include="Images\filefindersoft.png" />
     <EmbeddedResource Include="Resources\log4net.dll" />
     <EmbeddedResource Include="log4net.config" />
     <None Include="packages.config" />
     <None Include="Resources\settings.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
