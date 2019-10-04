@@ -12,10 +12,10 @@
 
 ## 服务器
 <div align=center>
- <image src="/YYX.FileFinder/Images/filefinder.png"/>
+ <image src="https://github.com/yinyongxian/YYX.FileFinder/blob/master/YYX.FileFinder/Images/filefindersoft.png"/>
 </div>
 
 ## 前端
 <div align=center>
- <image src="https://github.com/yinyongxian/YYX.FileFinder/blob/master/YYX.FileFinder/Images/filefindersoft.png"/>
+ <image src="/YYX.FileFinder/Images/filefinder.png"/>
 </div>
