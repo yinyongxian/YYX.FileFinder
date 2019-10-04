@@ -9,3 +9,13 @@
 2. dll嵌入exe
 3. log4net配置文件嵌入exe
 4. 文件下载
+
+## 服务器
+<div align=center>
+ <image src="/YYX.FileFinder/Images/filefinder.png"/>
+</div>
+
+## 前端
+<div align=center>
+ <image src="https://github.com/yinyongxian/YYX.FileFinder/blob/master/YYX.FileFinder/Images/filefindersoft.png"/>
+</div>
