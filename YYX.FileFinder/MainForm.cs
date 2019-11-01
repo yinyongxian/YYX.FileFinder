@@ -42,10 +42,10 @@ namespace YYX.FileFinder
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message);
+                            MessageBox.Show(ex.ToString());
 
-                            Log4Log.Info(ex.Message);
-                            ContentLog.WriteLine(ex.Message);
+                            Log4Log.Info(ex.ToString());
+                            ContentLog.WriteLine(ex.ToString());
                         }
 
                         while (true)
@@ -69,7 +69,8 @@ namespace YYX.FileFinder
             var autoRun = AutoRunToolStripMenuItem.Checked;
             var newAutoRun = !autoRun;
             AutoRun.SetRunEnable(newAutoRun);
-            AutoRunToolStripMenuItem.Checked = newAutoRun;
+            var runEnable = AutoRun.GetRunEnable();
+            AutoRunToolStripMenuItem.Checked = runEnable;
         }
     }
 }

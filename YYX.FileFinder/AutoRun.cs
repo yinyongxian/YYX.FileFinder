@@ -20,23 +20,5 @@ namespace YYX.FileFinder
 
             WindowAutoRun.SetEnable(fileName, filePath, runEnable);
         }
-
-        public static void RunWithWindowsStarted()
-        {
-            var runEnable = GetRunEnable();
-            if (!runEnable)
-            {
-                SetRunEnable(true);
-            }
-        }
-
-        public static void NotRunWithWindowsStarted()
-        {
-            var runEnable = GetRunEnable();
-            if (runEnable)
-            {
-                SetRunEnable(false);
-            }
-        }
     }
 }
