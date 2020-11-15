@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace YYX.FileFinder
+namespace YYX.FileFinder.Tools
 {
     public static class ContentLog
     {

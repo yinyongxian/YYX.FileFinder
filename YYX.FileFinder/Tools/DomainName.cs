@@ -1,4 +1,4 @@
-﻿namespace YYX.FileFinder
+﻿namespace YYX.FileFinder.Tools
 {
     public static class DomainName
     {

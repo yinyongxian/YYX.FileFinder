@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
+using YYX.FileFinder.Tools;
 
 namespace YYX.FileFinder
 {

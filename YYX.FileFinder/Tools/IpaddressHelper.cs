@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 
-namespace YYX.FileFinder
+namespace YYX.FileFinder.Tools
 {
     public static class IpaddressHelper
     {

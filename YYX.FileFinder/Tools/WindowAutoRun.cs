@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Win32;
 
-namespace YYX.FileFinder
+namespace YYX.FileFinder.Tools
 {
     public static class WindowAutoRun
     {

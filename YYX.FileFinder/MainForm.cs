@@ -4,6 +4,7 @@ using System.Threading;
 using System.Web.Http;
 using System.Web.Http.SelfHost;
 using System.Windows.Forms;
+using YYX.FileFinder.Tools;
 
 namespace YYX.FileFinder
 {

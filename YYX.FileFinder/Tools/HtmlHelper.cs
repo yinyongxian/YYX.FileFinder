@@ -1,4 +1,4 @@
-﻿namespace YYX.FileFinder
+﻿namespace YYX.FileFinder.Tools
 {
     static class HtmlHelper
     {

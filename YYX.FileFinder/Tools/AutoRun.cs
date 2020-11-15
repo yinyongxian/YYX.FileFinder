@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 
-namespace YYX.FileFinder
+namespace YYX.FileFinder.Tools
 {
     public static class AutoRun
     {

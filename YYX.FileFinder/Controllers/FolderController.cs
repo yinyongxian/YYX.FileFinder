@@ -1,7 +1,8 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
+using YYX.FileFinder.Tools;
 
-namespace YYX.FileFinder
+namespace YYX.FileFinder.Controllers
 {
     public class FolderController : ApiController
     {
