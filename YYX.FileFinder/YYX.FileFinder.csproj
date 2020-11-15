@@ -52,8 +52,9 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -158,6 +159,7 @@
     <Content Include="Images\filefindersoft.png" />
     <EmbeddedResource Include="Resources\log4net.dll" />
     <EmbeddedResource Include="log4net.config" />
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Resources\settings.png" />
   </ItemGroup>
