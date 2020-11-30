@@ -9,6 +9,8 @@
 2. dll嵌入exe
 3. log4net配置文件嵌入exe
 4. 文件下载
+5. 管理员启动
+6. 在线播放视频
 
 ## 服务器
 <div align=center>
