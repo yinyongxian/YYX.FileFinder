@@ -76,6 +76,7 @@
     <Reference Include="System.Net.Http.WebRequest">
       <HintPath>Resources\System.Net.Http.WebRequest.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Resources\System.Web.Http.dll</HintPath>
@@ -92,6 +93,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Tools\AutoRun.cs" />
     <Compile Include="Tools\ContentLog.cs" />
     <Compile Include="Tools\DirectoryInfoExtension.cs" />
@@ -157,6 +159,7 @@
     <Content Include="filefinder.ico" />
     <Content Include="Images\filefinder.png" />
     <Content Include="Images\filefindersoft.png" />
+    <EmbeddedResource Include="video.html" />
     <EmbeddedResource Include="Resources\log4net.dll" />
     <EmbeddedResource Include="log4net.config" />
     <None Include="app.manifest" />

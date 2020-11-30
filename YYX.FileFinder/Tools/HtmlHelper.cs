@@ -1,34 +1,55 @@
-﻿namespace YYX.FileFinder.Tools
+﻿using System.Collections.Generic;
+
+namespace YYX.FileFinder.Tools
 {
     static class HtmlHelper
     {
         public static string CreatHtmlTrOfFolder(string folderName, string path)
         {
-            const string operation = "打开";
-            var link = GetOpenFolderLink(path);
-            return CreatHtmlTr(folderName, link, operation);
-        }
-
-        public static string GetOpenFolderLink(string path)
-        {
-            return string.Format("/Folder/Open?path={0}", path);
+            var link = $"<a class=\"a-operation\" href = \"/Folder/Open?path={path}\">打开</a>";
+            return CreatHtmlTr(folderName, link);
         }
 
         public static string CreatHtmlTrOfFile(string fileName, string fileFullName)
         {
-            const string operation = "下载";
-            var link = string.Format("/File/Download?filePath={0}", fileFullName);
-            return CreatHtmlTr(fileName, link, operation);
+            var playLink = GetPlayLink(fileFullName);
+            var downloadLink = GetDownloadLink(fileFullName);
+
+
+            var links = string.Join(" ", new []
+            {
+                playLink,
+                downloadLink
+            });
+
+            return CreatHtmlTr(fileName, links);
         }
 
-        private static string CreatHtmlTr(string name, string link, string operation)
+        private static string CreatHtmlTr(string name, string links)
         {
-            return string.Format("<tr><td><a class=\"a-operation\"  href = \"{1}\">{2}</a>{0}</td></tr>", name, link, operation);
+            return $"<tr><td>{links}{name}</td></tr>";
         }
 
         public static string GetLink(string link, string text)
         {
             return string.Format("<a href = \"{0}\" style=\"float:none\">{1}</a>", link, text);
+        }
+
+        public static string GetOpenFolderLink(string path)
+        {
+            return $"/Folder/Open?path={path}";
+        }
+
+        public static string GetPlayLink(string filePath)
+        {
+            var link = $"<a class=\"a-operation\" href = \"/Video/Play?filePath={filePath}\">播放</a>";
+            return link;
+        }
+
+        public static string GetDownloadLink(string filePath)
+        {
+            var link = $"<a class=\"a-operation\" href = \"/File/Download?filePath={filePath}\">下载</a>";
+            return link;
         }
     }
 }
