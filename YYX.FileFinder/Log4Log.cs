@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Reflection;
 using log4net;
 using log4net.Config;
@@ -35,6 +36,11 @@ namespace YYX.FileFinder
         {
             if (Log4 != null && Log4.IsInfoEnabled)
             {
+                message = DateTime.Now +
+                          Environment.NewLine +
+                          message +
+                          Environment.NewLine;
+
                 Log4.Info(message);
             }
         }
