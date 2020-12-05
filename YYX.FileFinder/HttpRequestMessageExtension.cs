@@ -29,8 +29,8 @@ namespace YYX.FileFinder
                 using (var stream = new StreamReader(resourceStream))
                 {
                     var html = stream.ReadToEnd();
-                    var htmlTrOfFolders = directoryInfos.Select(item => HtmlHelper.CreatHtmlTrOfFolder(item.Name, item.FullName));
-                    var htmlTrOfFiles = fileInfos.Select(item => HtmlHelper.CreatHtmlTrOfFile(item.Name, item.FullName));
+                    var htmlTrOfFolders = directoryInfos.Select(item => HtmlHelper.CreateHtmlTrOfFolder(item.Name, item.FullName));
+                    var htmlTrOfFiles = fileInfos.Select(item => HtmlHelper.CreateHtmlTrOfFile(item.Name, item.FullName));
 
                     var logicalDrives = Environment.GetLogicalDrives();
                     var openFolderLinks = string.Join("&nbsp", logicalDrives.Select(item => HtmlHelper.GetLink(HtmlHelper.GetOpenFolderLink(item), item)));

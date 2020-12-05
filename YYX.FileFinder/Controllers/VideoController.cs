@@ -32,9 +32,8 @@ namespace YYX.FileFinder.Controllers
                 using (var stream = new StreamReader(resourceStream))
                 {
                     var html = stream.ReadToEnd();
-
-                    var encodeFilePath = HttpUtility.UrlEncode($@"{filePath}");
-                    var videoLink = $"/File/Download?filePath={encodeFilePath}";
+                    var urlEncodeFilePath = HttpUtility.UrlEncode(filePath);
+                    var videoLink = $"/File/Download?filePath={urlEncodeFilePath}";
                     html = html.Replace("{videoLink}", videoLink);
                  
                     response.Content = new StringContent(html, Encoding.UTF8);

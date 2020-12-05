@@ -17,12 +17,12 @@ namespace YYX.FileFinder.Controllers
             Log4Log.Info(Request.ToString());
             ContentLog.WriteLine(Request.ToString());
 
-            var fileName = Path.GetFileName(filePath);
             if (File.Exists(filePath) == false)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "文件未找到");
             }
             var response = new HttpResponseMessage(HttpStatusCode.OK);
+            var fileName = Path.GetFileName(filePath);
             try
             {
                 var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);

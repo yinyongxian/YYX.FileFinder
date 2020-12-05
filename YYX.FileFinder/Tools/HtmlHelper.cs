@@ -1,20 +1,22 @@
 ﻿using System.Collections.Generic;
+using System.Web;
 
 namespace YYX.FileFinder.Tools
 {
     static class HtmlHelper
     {
-        public static string CreatHtmlTrOfFolder(string folderName, string path)
+        public static string CreateHtmlTrOfFolder(string folderName, string path)
         {
             var link = $"<a class=\"a-operation\" href = \"/Folder/Open?path={path}\">打开</a>";
-            return CreatHtmlTr(folderName, link);
+            return CreateHtmlTr(folderName, link);
         }
 
-        public static string CreatHtmlTrOfFile(string fileName, string fileFullName)
+        public static string CreateHtmlTrOfFile(string fileName, string fileFullName)
         {
-            var playLink = GetPlayLink(fileFullName);
-            var downloadLink = GetDownloadLink(fileFullName);
+            var encodeFileFullName = HttpUtility.UrlEncode(fileFullName);
 
+            var playLink = GetPlayLink(encodeFileFullName);
+            var downloadLink = GetDownloadLink(encodeFileFullName);
 
             var links = string.Join(" ", new []
             {
@@ -22,17 +24,17 @@ namespace YYX.FileFinder.Tools
                 downloadLink
             });
 
-            return CreatHtmlTr(fileName, links);
+            return CreateHtmlTr(fileName, links);
         }
 
-        private static string CreatHtmlTr(string name, string links)
+        private static string CreateHtmlTr(string name, string links)
         {
             return $"<tr><td>{links}{name}</td></tr>";
         }
 
         public static string GetLink(string link, string text)
         {
-            return string.Format("<a href = \"{0}\" style=\"float:none\">{1}</a>", link, text);
+            return $"<a href = \"{link}\" style=\"float:none\">{text}</a>";
         }
 
         public static string GetOpenFolderLink(string path)
