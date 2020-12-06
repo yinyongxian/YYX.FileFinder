@@ -118,6 +118,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tools\MediaHelper.cs" />
     <Compile Include="Tools\WindowAutoRun.cs" />
   </ItemGroup>
   <ItemGroup>

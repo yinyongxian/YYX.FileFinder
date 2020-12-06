@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.IO;
 using System.Web;
 
 namespace YYX.FileFinder.Tools
@@ -13,12 +13,24 @@ namespace YYX.FileFinder.Tools
 
         public static string CreateHtmlTrOfFile(string fileName, string fileFullName)
         {
+            if (string.IsNullOrEmpty(fileName) ||
+                string.IsNullOrEmpty(fileFullName))
+            {
+                return string.Empty;
+            }
+
             var encodeFileFullName = HttpUtility.UrlEncode(fileFullName);
 
-            var playLink = GetPlayLink(encodeFileFullName);
+            string playLink = string.Empty;
+            var extension = Path.GetExtension(fileFullName);
+            if (MediaHelper.IsVideo(fileFullName))
+            {
+                playLink = GetPlayLink(encodeFileFullName);
+            }
+
             var downloadLink = GetDownloadLink(encodeFileFullName);
 
-            var links = string.Join(" ", new []
+            var links = string.Join("", new []
             {
                 playLink,
                 downloadLink
