@@ -2,10 +2,11 @@
 
 namespace YYX.FileFinder.Tools
 {
-    public class MediaHelper
+    public static class MediaHelper
     {
         #region Known video extensions
-        public static List<string> VideoExtensions = new List<string> {
+
+        private static readonly List<string> VideoExtensions = new List<string> {
             {".vob"},
             {".bup"},
             {".ifo"},

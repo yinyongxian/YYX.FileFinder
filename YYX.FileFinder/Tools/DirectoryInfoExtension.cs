@@ -21,7 +21,7 @@ namespace YYX.FileFinder.Tools
                     fullHtmlPath = "\\" + fullHtmlPath;
                 }
             }
-            return string.Format("当前路径&nbsp{0}", fullHtmlPath);
+            return $"当前路径&nbsp&nbsp&nbsp{fullHtmlPath}";
         }
 
         private static string CreatHtmlPath(this FileSystemInfo directoryInfo)

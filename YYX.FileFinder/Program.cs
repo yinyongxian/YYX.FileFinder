@@ -1,7 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
+using YYX.FileFinder.Tools;
 
 namespace YYX.FileFinder
 {
@@ -22,24 +21,8 @@ namespace YYX.FileFinder
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            AppDomain.CurrentDomain.AssemblyResolve += (sender, a) =>
-            {
-                var nameSpace = typeof(Program).Namespace;
-                var resourceName = string.Format("{0}.Resources.{1}.dll", nameSpace, new AssemblyName(a.Name).Name);
-                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
-                {
-                    if (stream != null)
-                    {
-                        var assemblyData = new byte[stream.Length];
-                        stream.Read(assemblyData, 0, assemblyData.Length);
-                        return Assembly.Load(assemblyData);
-                    }
-
-                    throw new FileLoadException(resourceName);
-                }
-            };
-
-            Application.Run(new MainForm());
+            AssemblyHelper.Load();
+            AdministratorHelper.Run();
         }
     }
 }

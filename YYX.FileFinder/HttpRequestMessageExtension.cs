@@ -33,8 +33,8 @@ namespace YYX.FileFinder
                     var htmlTrOfFiles = fileInfos.Select(item => HtmlHelper.CreateHtmlTrOfFile(item.Name, item.FullName));
 
                     var logicalDrives = Environment.GetLogicalDrives();
-                    var openFolderLinks = string.Join("&nbsp", logicalDrives.Select(item => HtmlHelper.GetLink(HtmlHelper.GetOpenFolderLink(item), item)));
-                    var selectLogicalDrive = string.Format("选择磁盘&nbsp{0}<br>", openFolderLinks);
+                    var openFolderLinks = string.Join("&nbsp&nbsp&nbsp", logicalDrives.Select(item => HtmlHelper.GetLink(HtmlHelper.GetOpenFolderLink(item), item)));
+                    var selectLogicalDrive = $"{openFolderLinks}<br><br>";
                     var fullHtmlPath = directoryInfo.GetFullHtmlPath();
 
                     var totalHtmlTr = string.Join(Environment.NewLine, htmlTrOfFolders.Concat(htmlTrOfFiles).Concat(new[] { selectLogicalDrive, fullHtmlPath }));

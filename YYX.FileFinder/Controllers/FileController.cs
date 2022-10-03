@@ -21,6 +21,7 @@ namespace YYX.FileFinder.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, "文件未找到");
             }
+
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             var fileName = Path.GetFileName(filePath);
             try

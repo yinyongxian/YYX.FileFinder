@@ -30,11 +30,7 @@ namespace YYX.FileFinder.Tools
 
             var downloadLink = GetDownloadLink(encodeFileFullName);
 
-            var links = string.Join("", new []
-            {
-                playLink,
-                downloadLink
-            });
+            var links = string.Join("", playLink, downloadLink);
 
             return CreateHtmlTr(fileName, links);
         }
