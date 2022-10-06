@@ -162,7 +162,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="filefinder.ico" />
+    <Content Include="filefinder.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\filefinder.png" />
     <Content Include="Images\filefindersoft.png" />
     <EmbeddedResource Include="video.html" />

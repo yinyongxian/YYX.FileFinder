@@ -5,32 +5,32 @@ namespace YYX.FileFinder.Tools
 {
     public static class ContentLog
     {
-        private static RichTextBox CurrentRichTextBox;
+        private static RichTextBox currentRichTextBox;
         private const int MaxCount = 1000;
 
         public static void Initialize(RichTextBox richTextBox)
         {
-            CurrentRichTextBox = richTextBox;
+            currentRichTextBox = richTextBox;
         }
 
         public static void WriteLine(string text)
         {
-            CurrentRichTextBox.BeginInvoke(new Action(() =>
+            currentRichTextBox.BeginInvoke(new Action(() =>
             {
-                if (CurrentRichTextBox != null)
+                if (currentRichTextBox != null)
                 {
-                    var linesLength = CurrentRichTextBox.Lines.Length;
+                    var linesLength = currentRichTextBox.Lines.Length;
                     var overflow = linesLength > MaxCount;
                     if (overflow)
                     {
-                        CurrentRichTextBox.Clear();
+                        currentRichTextBox.Clear();
                     }
 
-                    CurrentRichTextBox.AppendText(text);
-                    CurrentRichTextBox.AppendText(Environment.NewLine);
+                    currentRichTextBox.AppendText(text);
+                    currentRichTextBox.AppendText(Environment.NewLine);
 
-                    CurrentRichTextBox.SelectionStart = CurrentRichTextBox.Text.Length;
-                    CurrentRichTextBox.ScrollToCaret();
+                    currentRichTextBox.SelectionStart = currentRichTextBox.Text.Length;
+                    currentRichTextBox.ScrollToCaret();
                 }
             }));
         }
