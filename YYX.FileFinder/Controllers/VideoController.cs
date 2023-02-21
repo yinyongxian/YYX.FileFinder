@@ -14,7 +14,6 @@ namespace YYX.FileFinder.Controllers
 {
     public class VideoController : ApiController
     {
-
         [HttpGet]
         public HttpResponseMessage Play(HttpRequestMessage request, string filePath)
         {
@@ -31,7 +30,7 @@ namespace YYX.FileFinder.Controllers
                 {
                     var html = stream.ReadToEnd();
                     var urlEncodeFilePath = HttpUtility.UrlEncode(filePath);
-                    var videoLink = $"src=/Video/GetVideo?filePath={urlEncodeFilePath}  type=\"video/{extension}\"";
+                    var videoLink = $"/Video/GetVideo?filePath={urlEncodeFilePath}\" type=\"video/{extension}";
                     html = html.Replace("{videoLink}", videoLink);
 
                     response.Content = new StringContent(html, Encoding.UTF8);
@@ -72,36 +71,35 @@ namespace YYX.FileFinder.Controllers
             Log4Log.Info(Request.ToString());
             ContentLog.WriteLine(Request.ToString());
 
-            if (File.Exists(filePath) == false)
+            long from = 0;
+            if (request.Headers != null &&
+                request.Headers.Range   != null &&
+                request.Headers.Range.Ranges.Count > 0)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "文件未找到");
+                var range = request.Headers.Range.Ranges.ToArray()[0];
+                from = range.From ?? 0;
             }
-
-            var range = request.Headers.Range.Ranges.ToArray()[0];
-            var rangeFrom = range.From ?? 0;
-
 
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-                {
-                    response.Content = new StreamContent(fileStream);
+                var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 300 * 1024);
+                response.Content = new StreamContent(fileStream);
 
-                }
-
-                //response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                response.Content.Headers.ContentType = new MediaTypeHeaderValue("video/mp4");
-                var urlEncodeFilePath = HttpUtility.UrlEncode(filePath);
+                var extension = Path.GetExtension(filePath).TrimStart('.');
+                var urlEncodeFilePath = HttpUtility.UrlEncode(filePath, Encoding.UTF8);
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue($"video/{extension}");
                 response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
                 {
                     FileName = urlEncodeFilePath
                 };
 
-                response.Content.Headers.ContentLength = fileStream.Length;
-                response.Content.Headers.ContentRange = new ContentRangeHeaderValue(rangeFrom, fileStream.Length);
+                var end = fileStream.Length - 1;
+                long byteCount = 1_000;
+                long to = end - from > byteCount ? from + byteCount : end;
+                var contentRangeHeaderValue = new ContentRangeHeaderValue(from, to, fileStream.Length);
+                response.Content.Headers.ContentRange = contentRangeHeaderValue;
                 response.Headers.AcceptRanges.Add("bytes");
-                response.Headers.ETag = new EntityTagHeaderValue("\"tag\"");
 
                 Log4Log.Info(response.ToString());
                 ContentLog.WriteLine(response.ToString());
@@ -117,23 +115,6 @@ namespace YYX.FileFinder.Controllers
 
                 return httpResponseMessage;
             }
-
-            //String rangeString = request.Headers.Range...getHeader("Range");//如果是video标签发起的请求就不会为null
-
-            //long range = Long.valueOf(rangeString.substring(rangeString.indexOf("=") + 1, rangeString.indexOf("-")));
-
-            //response.Content.Headers.ContentType = .he("Content-Type", "video/mp4");
-
-            //response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode("视频文件名称.mp4", "UTF-8"));
-
-            //response.setContentLength(10000);//10000是视频文件的大小，上传文件时都会有这些参数的
-
-            //response.setHeader("Content-Range", String.valueOf(range + (10000 - 1)));//拖动进度条时的断点，其中10000是上面的视频文件大小，改成你的就好
-
-            //response.setHeader("Accept-Ranges", "bytes");
-
-            //response.setHeader("Etag", "W/"9767057 - 1323779115364"");//上传文件时都会有这些参数的
-
         }
     }
 }

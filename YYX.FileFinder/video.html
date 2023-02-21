@@ -11,10 +11,11 @@
 
 <body>
     <div id="playVideo">
-        <video {videoLink} controls="controls" autoplay="autoplay" preload="auto" name="media" width="100%" height="100%">
+        <video controls="controls" autoplay="autoplay" preload="auto" name="media" width="100%" height="100%">
             您的浏览器不支持 audio 元素。
+            <source src="{videoLink}">
         </video>
-</div>
+    </div>
 </body>
 
 </html>
