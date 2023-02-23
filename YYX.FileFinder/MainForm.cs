@@ -77,7 +77,5 @@ namespace YYX.FileFinder
             var runEnable = AutoRun.GetRunEnable();
             AutoRunToolStripMenuItem.Checked = runEnable;
         }
-
-        
     }
 }
