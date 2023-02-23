@@ -7,16 +7,15 @@ namespace YYX.FileFinder.Tools
 {
     public static class AdministratorHelper
     {
-        public static bool IsAdministrator()
+        private static bool IsAdministrator()
         {
-
             WindowsIdentity identity = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(identity);
             var inRole = principal.IsInRole(WindowsBuiltInRole.Administrator);
             return inRole;
         }
 
-        public static void RunAsAdministrator()
+        private static void RunAsAdministrator()
         {
            var startInfo = new ProcessStartInfo
            {
@@ -32,6 +31,8 @@ namespace YYX.FileFinder.Tools
         {
             if (IsAdministrator())
             {
+                INetFwManger.NetFwAddPorts("FF", Domain.Port, "TCP");
+                INetFwManger.NetFwAddApps("FF", Application.ExecutablePath);
                 Application.Run(new MainForm());
             }
             else

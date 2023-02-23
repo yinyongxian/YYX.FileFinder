@@ -100,7 +100,7 @@
     <Compile Include="Tools\AutoRun.cs" />
     <Compile Include="Tools\ContentLog.cs" />
     <Compile Include="Tools\DirectoryInfoExtension.cs" />
-    <Compile Include="Tools\DomainName.cs" />
+    <Compile Include="Tools\Domain.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Log4Log.cs" />
     <Compile Include="MainForm.cs">
@@ -113,6 +113,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Tools\HtmlHelper.cs" />
     <Compile Include="HttpRequestMessageExtension.cs" />
+    <Compile Include="Tools\INetFwManger.cs" />
     <Compile Include="Tools\IpaddressHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +171,16 @@
     <None Include="packages.config" />
     <None Include="Resources\settings.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="NetFwTypeLib">
+      <Guid>{58FBCF7C-E7A9-467C-80B3-FC65E8FCCA08}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

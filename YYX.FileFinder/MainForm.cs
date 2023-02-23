@@ -13,6 +13,10 @@ namespace YYX.FileFinder
         public MainForm()
         {
             InitializeComponent();
+            this.Disposed += (sender, args) =>
+            {
+                INetFwManger.NetFwDelApps(Application.ExecutablePath);
+            };
         }
 
         protected override void OnLoad(EventArgs e)
@@ -24,7 +28,7 @@ namespace YYX.FileFinder
 
             var thread = new Thread(() =>
                 {
-                    var config = new HttpSelfHostConfiguration(DomainName.Value);
+                    var config = new HttpSelfHostConfiguration(Domain.Value);
                     config.Routes.MapHttpRoute(
                         "Default",
                         "{controller}/{action}",
@@ -73,5 +77,7 @@ namespace YYX.FileFinder
             var runEnable = AutoRun.GetRunEnable();
             AutoRunToolStripMenuItem.Checked = runEnable;
         }
+
+        
     }
 }
