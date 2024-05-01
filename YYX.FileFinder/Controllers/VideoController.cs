@@ -71,35 +71,54 @@ namespace YYX.FileFinder.Controllers
             Log4Log.Info(Request.ToString());
             ContentLog.WriteLine(Request.ToString());
 
-            long from = 0;
-            if (request.Headers != null &&
-                request.Headers.Range   != null &&
-                request.Headers.Range.Ranges.Count > 0)
-            {
-                var range = request.Headers.Range.Ranges.ToArray()[0];
-                from = range.From ?? 0;
-            }
 
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 300 * 1024);
-                response.Content = new StreamContent(fileStream);
+                var videoStream = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+                videoStream.Seek(0, SeekOrigin.Begin);
+
+                long from = 0, to = videoStream.Length, length = videoStream.Length;
+                if (request.Headers != null &&
+                    request.Headers.Range != null &&
+                    request.Headers.Range.Ranges.Count > 0 &&
+                    request.Headers.Range.Ranges.FirstOrDefault()?.From > 0)
+                {
+                    var range = request.Headers.Range.Ranges.ToArray()[0];
+                    from = range.From ?? 0;
+                    to = (range.To.HasValue && range.To > 0) ? range.To.Value : videoStream.Length - 1;
+                    videoStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite,
+                        bufferSize: 4096, options: FileOptions.SequentialScan | FileOptions.Asynchronous)
+                    {
+                        //Position = from
+                    };
+                    length = to - from + 1;
+                }
+
+                var memoryStream = new MemoryStream();
+                using (videoStream)
+                {
+                    videoStream.CopyTo(memoryStream);
+                }
+
+                memoryStream.Position = from;
+
+
+                response.Content = new StreamContent(memoryStream);
+
+                response.Content.Headers.ContentRange = new ContentRangeHeaderValue(from, to, length);
+                response.Headers.AcceptRanges.Add("bytes");
+
+                response.Content.Headers.ContentLength = memoryStream.Length;
 
                 var extension = Path.GetExtension(filePath).TrimStart('.');
                 var urlEncodeFilePath = HttpUtility.UrlEncode(filePath, Encoding.UTF8);
                 response.Content.Headers.ContentType = new MediaTypeHeaderValue($"video/{extension}");
+
                 response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
                 {
                     FileName = urlEncodeFilePath
                 };
-
-                var end = fileStream.Length - 1;
-                long byteCount = 1_000;
-                long to = end - from > byteCount ? from + byteCount : end;
-                var contentRangeHeaderValue = new ContentRangeHeaderValue(from, to, fileStream.Length);
-                response.Content.Headers.ContentRange = contentRangeHeaderValue;
-                response.Headers.AcceptRanges.Add("bytes");
 
                 Log4Log.Info(response.ToString());
                 ContentLog.WriteLine(response.ToString());
