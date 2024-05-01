@@ -21,7 +21,7 @@ namespace YYX.FileFinder
 
         protected override void OnLoad(EventArgs e)
         {
-            ContentLog.Initialize(richTextBoxContent);
+            ContentLog.Initialize(richTextBoxSites ,richTextBoxContent);
 
             var autoRunEnable = AutoRun.GetRunEnable();
             AutoRunToolStripMenuItem.Checked = autoRunEnable;
@@ -62,6 +62,11 @@ namespace YYX.FileFinder
                 })
             { IsBackground = true };
             thread.Start();
+        }
+
+        private void richTextBoxSites_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start(e.LinkText);
         }
 
         private void richTextBoxContent_LinkClicked(object sender, LinkClickedEventArgs e)

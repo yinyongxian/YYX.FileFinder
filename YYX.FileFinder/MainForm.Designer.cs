@@ -33,6 +33,7 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.AutoRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBoxContent = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxSites = new System.Windows.Forms.RichTextBox();
             this.toolStripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             // AutoRunToolStripMenuItem
             // 
             this.AutoRunToolStripMenuItem.Name = "AutoRunToolStripMenuItem";
-            this.AutoRunToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AutoRunToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.AutoRunToolStripMenuItem.Text = "开机启动";
             this.AutoRunToolStripMenuItem.Click += new System.EventHandler(this.AutoRunToolStripMenuItem_Click);
             // 
@@ -68,19 +69,31 @@
             // 
             this.richTextBoxContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxContent.Location = new System.Drawing.Point(0, 23);
+            this.richTextBoxContent.Location = new System.Drawing.Point(0, 111);
             this.richTextBoxContent.Name = "richTextBoxContent";
-            this.richTextBoxContent.Size = new System.Drawing.Size(800, 427);
-            this.richTextBoxContent.TabIndex = 1;
+            this.richTextBoxContent.Size = new System.Drawing.Size(800, 377);
+            this.richTextBoxContent.TabIndex = 2;
             this.richTextBoxContent.Text = "";
             this.richTextBoxContent.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxContent_LinkClicked);
             // 
+            // richTextBoxSites
+            // 
+            this.richTextBoxSites.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxSites.Dock = System.Windows.Forms.DockStyle.Top;
+            this.richTextBoxSites.Location = new System.Drawing.Point(0, 23);
+            this.richTextBoxSites.Name = "richTextBoxSites";
+            this.richTextBoxSites.Size = new System.Drawing.Size(800, 88);
+            this.richTextBoxSites.TabIndex = 1;
+            this.richTextBoxSites.Text = "";
+            this.richTextBoxSites.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxSites_LinkClicked);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 488);
             this.Controls.Add(this.richTextBoxContent);
+            this.Controls.Add(this.richTextBoxSites);
             this.Controls.Add(this.toolStripMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -99,6 +112,7 @@
         private System.Windows.Forms.RichTextBox richTextBoxContent;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem AutoRunToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox richTextBoxSites;
     }
 }
 

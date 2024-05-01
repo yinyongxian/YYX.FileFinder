@@ -13,7 +13,7 @@ namespace YYX.FileFinder.Tools
             {
                 const string linkDescription = @"您可以通过以下链接访问：";
                 Log4Log.Info(linkDescription);
-                ContentLog.WriteLine(linkDescription);
+                ContentLog.WriteSite(linkDescription);
 
                 var hostName = Dns.GetHostName();
                 var ipHostEntry = Dns.GetHostEntry(hostName);
@@ -25,7 +25,7 @@ namespace YYX.FileFinder.Tools
                     {
                         var url = $@"http://{item}:12321";
                         Log4Log.Info(url);
-                        ContentLog.WriteLine(url);
+                        ContentLog.WriteSite(url);
                     });
             }
             catch (Exception ex)
