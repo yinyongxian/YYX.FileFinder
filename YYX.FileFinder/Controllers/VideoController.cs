@@ -6,15 +6,18 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using YYX.FileFinder.Tools;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace YYX.FileFinder.Controllers
 {
     public class VideoController : ApiController
     {
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public HttpResponseMessage Play(HttpRequestMessage request, string filePath)
         {
             Log4Log.Info(Request.ToString());
@@ -65,8 +68,8 @@ namespace YYX.FileFinder.Controllers
             return resourceStream;
         }
 
-        [HttpGet]
-        public HttpResponseMessage GetVideo(HttpRequestMessage request, string filePath)
+        [System.Web.Http.HttpGet]
+        public async Task<HttpResponseMessage> GetVideo(HttpRequestMessage request, string filePath)
         {
             Log4Log.Info(Request.ToString());
             ContentLog.WriteLine(Request.ToString());
@@ -92,13 +95,13 @@ namespace YYX.FileFinder.Controllers
                     {
                         //Position = from
                     };
-                    length = to - from + 1;
+                    response.StatusCode = HttpStatusCode.PartialContent;
                 }
 
                 var memoryStream = new MemoryStream();
                 using (videoStream)
                 {
-                    videoStream.CopyTo(memoryStream);
+                    await videoStream.CopyToAsync(memoryStream);
                 }
 
                 memoryStream.Position = from;
@@ -106,7 +109,7 @@ namespace YYX.FileFinder.Controllers
 
                 response.Content = new StreamContent(memoryStream);
 
-                response.Content.Headers.ContentRange = new ContentRangeHeaderValue(from, to, length);
+                response.Content.Headers.ContentRange = new ContentRangeHeaderValue(from, to, memoryStream.Length);
                 response.Headers.AcceptRanges.Add("bytes");
 
                 response.Content.Headers.ContentLength = memoryStream.Length;
