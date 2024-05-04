@@ -21,6 +21,15 @@ namespace YYX.FileFinder.Controllers
             Log4Log.Info(Request.ToString());
             ContentLog.WriteLine(Request.ToString());
 
+            if (File.Exists(filePath))
+            {
+                var fileInfo = new FileInfo(filePath);
+                if (fileInfo.Length > int.MaxValue)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.BadRequest);
+                }
+            }
+
             var extension = Path.GetExtension(filePath).TrimStart('.');
 
             try
