@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using YYX.FileFinder.Tools;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 
 namespace YYX.FileFinder.Controllers
 {
@@ -74,7 +72,6 @@ namespace YYX.FileFinder.Controllers
             Log4Log.Info(Request.ToString());
             ContentLog.WriteLine(Request.ToString());
 
-
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
@@ -105,7 +102,6 @@ namespace YYX.FileFinder.Controllers
                 }
 
                 memoryStream.Position = from;
-
 
                 response.Content = new StreamContent(memoryStream);
 
